@@ -3,42 +3,44 @@ import 'moment-timezone';
 import Heart from "react-animated-heart";
 import { Icon } from 'semantic-ui-react'
 
-function Picture({ data }) {
-  console.log(data)
+function Picture({ data, id }) {
   const [isClick, setIsClick] = useState(false);
   const [isDetailedView, setIsDetailedView] = useState(false);
   const isImg = data.media_type !== "video" ? true : false;
-  var dateTime = data.date;
-  var title = data.title;
-  var titleFormatted = title;
-  if (title.length > 100) {
-    titleFormatted = title.slice(0, 100) + "...";
+
+  let pictureInfo = {
+    dateTime: data.date,
+    title: data.title,
+    media_url: isImg ? data.url : "pictureSub.jpeg",
+    detailed_media_url: data.url
+  }
+
+  if (pictureInfo.title.length > 100) {
+    pictureInfo.title = pictureInfo.title.slice(0, 100) + "...";
   }
   if (!isImg) {
-    titleFormatted += "(Video)"
+    pictureInfo.title += "(Video)"
   }
-  var media_url = isImg ? data.url : "pictureSub.jpeg";
-  var detailed_media_url = data.url;
-  var emoji = '✨'
 
   return (
-    <section id="me">
+    <section>
       <div className="pictures">
         <div className="pictures_header">
-          <h2 className="pictures_title" onClick={() => { setIsDetailedView(true) }}>{emoji}&nbsp;{titleFormatted}</h2>
+          <h2 className="pictures_title" onClick={() => { setIsDetailedView(true) }}>✨&nbsp;{pictureInfo.title}</h2>
           <Heart className="like_btn" isClick={isClick} onClick={() => setIsClick(!isClick)} />
         </div>
-        <img src={media_url} className="pictures_picture" />
+        <img src={pictureInfo.media_url} className="pictures_picture" />
         <div className="picture_footer">
-          <h4 className="pictures_date">{dateTime}</h4>
+          <h4 className="pictures_date">{pictureInfo.dateTime}</h4>
         </div>
       </div>
       {isDetailedView && (
         <div className="details">
-          {isImg ? <img src={detailed_media_url} className="details_picture" /> : <iframe
+          {isImg ? <img src={pictureInfo.detailed_media_url} className="details_picture" /> : <iframe
             className="details_video"
-            src={detailed_media_url}
+            src={pictureInfo.detailed_media_url}
             frameBorder="0"
+
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />}

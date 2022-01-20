@@ -17,6 +17,13 @@ a {
   color: #f5e4f8;
 }
 
+.date_picker{
+  border-radius: 10px;
+  font: 10px 'Space Mono', monospace;
+  background-color: rgb(245, 243, 217);
+  text-align: center;
+}
+
 .pictures > .picture_footer > .like_btn{
   width:10px;
   height: 10px;
