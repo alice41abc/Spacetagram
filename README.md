@@ -7,7 +7,10 @@ You could also set a start date to get all the APOD (Astronomy Picture of the Da
 Check today's APOD: https://apod.nasa.gov/apod/astropix.html
 ## Available Scripts
 
-In the project directory, you can run:
+First install the depedencies with:
+### `npm install`
+
+And then in the project directory, you can run:
 
 ### `npm start`
 
