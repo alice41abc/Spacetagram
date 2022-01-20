@@ -7,6 +7,7 @@ You could also set a start date to get all the APOD (Astronomy Picture of the Da
 Check today's APOD: https://apod.nasa.gov/apod/astropix.html
 
 Link: [Spacetagram](https://spacetagram-alice.herokuapp.com/)
+*The website is hosted on heroku (free) so it might take a while to initially load
 ## Available Scripts
 
 First install the depedencies with:
